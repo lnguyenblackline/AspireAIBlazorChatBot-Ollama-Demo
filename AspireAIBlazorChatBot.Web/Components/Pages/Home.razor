@@ -1,0 +1,62 @@
+﻿@rendermode InteractiveServer
+@page "/"
+@using AspireApp.WebApp.Chatbot
+
+@inject IConfiguration Configuration
+@inject IHttpClientFactory HttpClientFactory
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Let's test local models with Ollama!
+
+<hr />
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <strong>Model Name:</strong>
+        <a href="@ollamaModelUrl" target="_blank">@ollamaSLMName</a>
+    </li>
+    <li class="list-group-item">
+        <strong>Ollama Url:</strong>
+        <a href="@ollamaUrl" target="_blank">@ollamaUrl</a>
+    </li>
+    <li class="list-group-item">
+        <strong>Ollama Model List:</strong>
+        <a href="@ollamaModelUrlModelList" target="_blank">@ollamaModelUrlModelList</a>
+    </li>
+    <li class="list-group-item">
+        <button class="btn btn-primary" @onclick=PullModel>Check Model Status</button>
+    </li>
+    <li class="list-group-item">
+        <p>@MessageProcessor.ProcessMessageToHTML(modelStatus)</p>
+    </li>
+</ul>
+
+@code {
+
+    string ollamaSLMName = "";
+    string ollamaModelUrl = "";
+    string ollamaModelUrlModelList = "";
+    string ollamaUrl = "";
+    string modelStatus = "";
+
+    protected override void OnInitialized()
+    {
+        ollamaSLMName = Configuration["Aspire:OllamaSharp:ollama:Models:0"]!;
+        ollamaModelUrl = $@"https://ollama.com/library/{ollamaSLMName}";
+        ollamaUrl = Configuration.GetConnectionString("ollama")!;
+        ollamaModelUrlModelList = $@"{ollamaUrl}/api/tags";
+    }
+
+    async void PullModel()
+    {
+        var os = new OllamaApiService(HttpClientFactory);
+        modelStatus = await os.PullModelAsync(ollamaUrl, ollamaSLMName);
+
+        // refresh the page
+        StateHasChanged();
+    }
+
+}
