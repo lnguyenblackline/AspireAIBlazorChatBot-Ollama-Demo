@@ -13,7 +13,7 @@ internal class Program
     {
        var modelId = "gpt-4o-mini";
        var endpoint = "https://blackline-openai.openai.azure.com/";
-       var apiKey = "6f19c652baa6456093af806313332059";
+       var apiKey = "";
 
         // Create kernel with Azure OpenAI Chat Completion service
         var builder = Kernel.CreateBuilder()
