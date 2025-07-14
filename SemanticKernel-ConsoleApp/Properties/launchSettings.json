@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SemanticKernel-ConsoleApp": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
