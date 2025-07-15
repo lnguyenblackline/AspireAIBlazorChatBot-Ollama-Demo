@@ -1,0 +1,9 @@
+<< How to use the Azure Ai Foundry >>
+https://portal.azure.com/#@blacklineconsulting.com/resource/subscriptions/135f69f0-f956-42fb-9e98-a335d353976f/resourceGroups/blc-internal/providers/Microsoft.CognitiveServices/accounts/blackline-openai/overview
+https://ai.azure.com/resource/deployments/%2Fsubscriptions%2F135f69f0-f956-42fb-9e98-a335d353976f%2FresourceGroups%2Fblc-internal%2Fproviders%2FMicrosoft.CognitiveServices%2Faccounts%2Fblackline-openai%2Fdeployments%2Fgpt-4o?wsid=/subscriptions/135f69f0-f956-42fb-9e98-a335d353976f/resourceGroups/blc-internal/providers/Microsoft.CognitiveServices/accounts/blackline-openai&tid=9698df9e-4907-4fa6-a1d0-b8939c999dc1
+Then go to "Go To Azure AI Foundry Portal"
+ => Deployment to get all the info. 
+ 
+ 
+ 
+<< Done >>

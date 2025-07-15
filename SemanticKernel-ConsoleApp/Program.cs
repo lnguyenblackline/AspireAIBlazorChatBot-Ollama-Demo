@@ -11,11 +11,9 @@ internal class Program
 {
     static async Task Main(string[] args)
     {
-       var modelId = "gpt-4o-mini";
-       var endpoint = "https://blackline-openai.openai.azure.com/";
-       var apiKey = "";
+       var modelId = ConfigAIAgent(out var endpoint, out var apiKey);
 
-        // Create kernel with Azure OpenAI Chat Completion service
+       // Create kernel with Azure OpenAI Chat Completion service
         var builder = Kernel.CreateBuilder()
             .AddAzureOpenAIChatCompletion(modelId, endpoint, apiKey);
 
@@ -56,5 +54,13 @@ internal class Program
             history.AddMessage(response.Role, response.Content ?? string.Empty);
         }
         while (!string.IsNullOrEmpty(userInput));
+    }
+
+    private static string ConfigAIAgent(out string endpoint, out string apiKey)
+    {
+        var modelId = "gpt-4o-mini";
+        endpoint = "https://blackline-openai.openai.azure.com/";
+        apiKey = "6f19c652baa6456093af806313332059";
+        return modelId;
     }
 }
